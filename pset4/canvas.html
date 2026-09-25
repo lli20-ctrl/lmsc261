@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<body>
+    <canvas width="600" height="600" id="canvas" style="width: 600px; height: 600px;"></canvas>
+</body>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const w = canvas.width, h = canvas.height;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width *= dpr, canvas.height *= dpr;
+    ctx.scale(dpr, dpr);
+
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,w,h);
+
+
+    for (let index = 0; index < 100; index++) {
+
+   let xPos = Math.random()*600;
+    let yPos = Math.random()*600;
+    let radius = Math.random()*50;
+
+    ctx.beginPath();
+    ctx.arc(
+        xPos,
+        yPos,
+        radius,
+        90,
+        Math.PI* Math.random()*50,
+        true
+    )
+
+    if (yPos < 300) {
+        ctx.fillStyle = "darkblue"
+    } else {
+        ctx.fillStyle = "darkred"
+    }
+
+
+
+    ctx.fill(); 
+        
+    }
+
+    setInterval(function() {
+    window.location.reload();
+    }, 25); 
+   
+
+</script>
