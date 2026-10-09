@@ -15,17 +15,40 @@
     ctx.fillStyle = "white";
     ctx.fillRect(0,0,w,h);
 
+     function drawGrid(gridSize) {
+            ctx.beginPath();
+            // Set grid styling
+            ctx.strokeStyle = "#e0e0e0"; 
+            ctx.lineWidth = 1;
+
+            // Loop across the width and height of the 600x600 canvas
+            for (let x = 0; x <= 600; x += gridSize) {
+                // Vertical lines (moving across the X axis, drawing from top to bottom)
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, 600);
+
+                // Horizontal lines (moving down the Y axis, drawing from left to right)
+                ctx.moveTo(0, x);
+                ctx.lineTo(600, x);
+            }
+
+            // Commit the entire path to the screen at once for optimal performance
+            ctx.stroke();
+        }
+
+        // Draw a grid with square sizes of 40x40 pixels
+        //drawGrid(40); 
 
 
     // main blade
-    ctx.fillStyle = '#A9A9A9'; 
+    ctx.fillStyle = '#A9A9A9'; // Metallic silver
     ctx.beginPath();
-    ctx.moveTo(300, 20);    
-    ctx.quadraticCurveTo(320, 80, 320, 120); 
-    ctx.lineTo(320, 400);  
-    ctx.lineTo(280, 400);  
+    ctx.moveTo(300, 20);    // Blade tip
+    ctx.quadraticCurveTo(320, 80, 320, 120); // 2. Control point, then End point
+    ctx.lineTo(320, 400);   // Lower right blade base
+    ctx.lineTo(280, 400);  // Lower left blade base
     ctx.lineTo(280, 120); 
-    ctx.quadraticCurveTo(280, 80, 300, 20);   
+    ctx.quadraticCurveTo(280, 80, 300, 20);   // Upper left shoulder
     ctx.closePath();
     ctx.fill();
     
@@ -109,7 +132,7 @@
     width = 40;
     height = 40;
     degrees = 45; 
-
+    
     centerX = x + width / 2;
     centerY = y + height / 2;
 
