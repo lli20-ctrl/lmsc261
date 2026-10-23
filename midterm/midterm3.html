@@ -137,97 +137,97 @@
     function X(v) { return w * (v / 600); }
     function Y(v) { return h * (v / 600); }
 
-function drawRing(x, y, size) {          // two circles, one inside the other
-  ctx.beginPath();
-  ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-  ctx.stroke();
+    function drawRing(x, y, size) {         
+    ctx.beginPath();
+    ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+    ctx.stroke();
 
-  ctx.beginPath();
-  ctx.arc(x, y, size / 5, 0, Math.PI * 2);
-  ctx.stroke();
-}
-
-function drawFlame(x, y, size) {         // rounded flame / droplet (filled)
-  ctx.beginPath();
-  ctx.moveTo(x, y - size / 2);
-  ctx.quadraticCurveTo(x + size * 0.55, y, x, y + size / 2);
-  ctx.quadraticCurveTo(x - size * 0.55, y, x, y - size / 2);
-  ctx.closePath();
-  ctx.fill();
-}
-
-function drawZig(x, y, size) {           // zigzag lightning line
-  ctx.beginPath();
-  ctx.moveTo(x, y - size / 2);
-  ctx.lineTo(x + size * 0.5, y - size / 4);
-  ctx.lineTo(x - size * 0.5, y);
-  ctx.lineTo(x + size * 0.5, y + size / 4);
-  ctx.lineTo(x, y + size / 2);
-  ctx.stroke();
-}
-
-function drawSlashes(x, y, size) {       // two parallel slashes
-  ctx.beginPath();
-  ctx.moveTo(x - size * 0.55, y - size / 2);
-  ctx.lineTo(x - size * 0.15, y + size / 2);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.moveTo(x + size * 0.15, y - size / 2);
-  ctx.lineTo(x + size * 0.55, y + size / 2);
-  ctx.stroke();
-}
-
-function drawTriangle(x, y, size) {      // triangle outline
-  ctx.beginPath();
-  ctx.moveTo(x, y - size / 2);
-  ctx.lineTo(x + size * 0.5, y + size / 2);
-  ctx.lineTo(x - size * 0.5, y + size / 2);
-  ctx.closePath();
-  ctx.stroke();
-}
-
-function drawHalfCircle(x, y, size) {       // curved arc plus a tick
-  ctx.beginPath();
-  ctx.arc(x, y, size / 2, Math.PI * 0.15, Math.PI * 1.6);
-  ctx.stroke();
-
-}
-
-// --- MAIN ANIMATION LOOP ---
-function animate() {
-        
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, w, h);
-
-        
-        drawSword(w, h);
-
-        
-        if (runesVisible) {
-            const elapsed = (Date.now() - startTime) / 1000; 
-            
-            const colorIndex = Math.floor(elapsed * 9) % COLORS.length;
-            const activeColor = COLORS[colorIndex];
-
-            ctx.strokeStyle = activeColor;
-            ctx.fillStyle   = activeColor;
-            ctx.lineWidth   = X(2);
-
-            drawTriangle(X(290), Y(100), X(10));        
-            drawZig(X(301), Y(138), X(20));
-            drawHalfCircle(X(312), Y(164), X(10));
-            drawRing(X(303), Y(200), X(10));        
-            drawZig(X(301), Y(240), X(20));
-            drawFlame(X(288), Y(258), X(10));
-            drawRing(X(312), Y(298), X(13));
-            drawSlashes(X(292), Y(311), X(10));
-            drawHalfCircle(X(303), Y(333), X(10));
-            drawZig(X(301), Y(370), X(20));
-        }
-
-        requestAnimationFrame(animate);
+    ctx.beginPath();
+    ctx.arc(x, y, size / 5, 0, Math.PI * 2);
+    ctx.stroke();
     }
 
-    animate();
-</script>
+    function drawFlame(x, y, size) {        
+    ctx.beginPath();
+    ctx.moveTo(x, y - size / 2);
+    ctx.quadraticCurveTo(x + size * 0.55, y, x, y + size / 2);
+    ctx.quadraticCurveTo(x - size * 0.55, y, x, y - size / 2);
+    ctx.closePath();
+    ctx.fill();
+    }
+
+    function drawZig(x, y, size) {           
+    ctx.beginPath();
+    ctx.moveTo(x, y - size / 2);
+    ctx.lineTo(x + size * 0.5, y - size / 4);
+    ctx.lineTo(x - size * 0.5, y);
+    ctx.lineTo(x + size * 0.5, y + size / 4);
+    ctx.lineTo(x, y + size / 2);
+    ctx.stroke();
+    }
+
+    function drawSlashes(x, y, size) {      
+    ctx.beginPath();
+    ctx.moveTo(x - size * 0.55, y - size / 2);
+    ctx.lineTo(x - size * 0.15, y + size / 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(x + size * 0.15, y - size / 2);
+    ctx.lineTo(x + size * 0.55, y + size / 2);
+    ctx.stroke();
+    }
+
+    function drawTriangle(x, y, size) {     
+    ctx.beginPath();
+    ctx.moveTo(x, y - size / 2);
+    ctx.lineTo(x + size * 0.5, y + size / 2);
+    ctx.lineTo(x - size * 0.5, y + size / 2);
+    ctx.closePath();
+    ctx.stroke();
+    }
+
+    function drawHalfCircle(x, y, size) {     
+    ctx.beginPath();
+    ctx.arc(x, y, size / 2, Math.PI * 0.15, Math.PI * 1.6);
+    ctx.stroke();
+
+    }
+
+    
+    function animate() {
+            
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, w, h);
+
+            
+            drawSword(w, h);
+
+            
+            if (runesVisible) {
+                const elapsed = (Date.now() - startTime) / 1000; 
+                
+                const colorIndex = Math.floor(elapsed * 9) % COLORS.length;
+                const activeColor = COLORS[colorIndex];
+
+                ctx.strokeStyle = activeColor;
+                ctx.fillStyle   = activeColor;
+                ctx.lineWidth   = X(2);
+
+                drawTriangle(X(290), Y(100), X(10));        
+                drawZig(X(301), Y(138), X(20));
+                drawHalfCircle(X(312), Y(164), X(10));
+                drawRing(X(303), Y(200), X(10));        
+                drawZig(X(301), Y(240), X(20));
+                drawFlame(X(288), Y(258), X(10));
+                drawRing(X(312), Y(298), X(13));
+                drawSlashes(X(292), Y(311), X(10));
+                drawHalfCircle(X(303), Y(333), X(10));
+                drawZig(X(301), Y(370), X(20));
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
